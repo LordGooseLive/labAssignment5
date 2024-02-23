@@ -17,6 +17,7 @@ int search(int numbers[], int low, int high, int value) // value index search (a
 
 	if (numbers[mid] == value) //value found
 		return (mid);
+		//covers case (low == high)
 	
 	else if (numbers[mid] > value) //value smaller than midpoint
 		return search (numbers, low, mid -1, value); //decrement midpoint to avoid reuse

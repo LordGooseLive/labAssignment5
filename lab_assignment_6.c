@@ -1,10 +1,31 @@
-#include <stdio.h>
+//Arav Tulsi
+//Dr. Neslisah Torosdagli
+//COP3502C
+//Lab Assignment 6
 
-int search(int numbers[], int low, int high, int value) 
+//Libraries
+#include <stdio.h>
+#include <stdlib.h> //added by student
+
+//Student Implementation
+int search(int numbers[], int low, int high, int value) // value index search (array, lowest index, highest index, search value)
 {
-	return -1;
+	if (low > high) //invalid input or value absent
+		return -1;
+
+	int mid = (high + low)/2; //array midpoint
+
+	if (numbers[mid] == value) //value found
+		return (mid);
+	
+	else if (numbers[mid] > value) //value smaller than midpoint
+		return search (numbers, low, mid -1, value); //decrement midpoint to avoid reuse
+
+	else if (numbers [mid] < value) //value larger than midpoint
+		return search(numbers, mid +1 , high, value); //increment midpoint to avoid reuse
 }
 
+//Professor Provided code
 void printArray(int numbers[], int sz)
 {
 	int i;
@@ -16,7 +37,7 @@ void printArray(int numbers[], int sz)
 	printf("\n");
 }
 
-int main(void)
+int main(void) //Driver code
 {
 	int i, numInputs;
 	char* str;
